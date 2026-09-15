@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TARS İnsansız Kara Aracı | TEKNOFEST 2026</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF2A2A; /* Teknofest Kırmızısı */
+            --bg-dark: #050505;
+            --bg-card: #121212;
+            --text-main: #E0E0E0;
+            --text-muted: #888888;
+            --accent: #2A2A2A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* --- Navbar --- */
+        nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 30px 0;
+            z-index: 10;
+        }
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+        .logo span { color: var(--primary); }
+
+        /* --- Hero Section --- */
+        header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.95)), 
+                        url('https://images.unsplash.com/photo-1614064500918-028c2c7d91de?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .hero-content {
+            text-align: left;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 42, 42, 0.1);
+            color: var(--primary);
+            padding: 6px 16px;
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            line-height: 1.1;
+            text-shadow: 0 0 20px rgba(255, 42, 42, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: transparent;
+            color: var(--text-main);
+            padding: 15px 40px;
+            border: 2px solid var(--primary);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 42, 42, 0.1);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 0 30px rgba(255, 42, 42, 0.5);
+        }
+
+        /* --- Sistem Mimarisi --- */
+        .section { padding: 100px 0; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        .section-title span { color: var(--primary); }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            padding: 40px 30px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* --- Başvuru Formu --- */
+        .apply-section {
+            background: #0a0a0a;
+            border-top: 1px solid var(--accent);
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .form-container {
+            background: var(--bg-card);
+            padding: 50px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group { margin-bottom: 25px; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ccc;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            background: var(--bg-dark);
+            border: 1px solid var(--accent);
+            padding: 15px;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(255, 42, 42, 0.15);
+        }
+
+        select.form-control { cursor: pointer; }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--bg-dark);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 2px solid var(--primary);
+        }
+        footer p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .form-container { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-inner">
+            <div class="logo">TARS<span>_</span></div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">TEKNOFEST 2026 PROJESİ</div>
+                <h1 class="hero-title">SINIRLARI<br>ZORLA.</h1>
+                <p class="hero-subtitle">Mekanik kusursuzluk ve otonom zekanın birleşimi. Nokta dönüşlü, monokok gövdeli insansız kara aracımız TARS'ı geliştiriyoruz. Ekibe katıl, geleceği tasarla.</p>
+                <a href="#apply" class="btn-primary">
+                    SİSTEME GİRİŞ YAP <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="section" id="architecture">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">SİSTEM <span>MİMARİSİ</span></h2>
+                <p style="color: var(--text-muted); font-size: 1.2rem;">Aradığımız yetkinlikler ve odaklandığımız departmanlar.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fa-solid fa-gear feature-icon"></i>
+                    <h3>MEKANİK & TASARIM</h3>
+                    <p>Monokok şasi mukavemet analizleri, skid steering (nokta dönüş) aktarma organları, diferansiyel ve süspansiyon sistemlerinin CAD tasarımı.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-microchip feature-icon"></i>
+                    <h3>DONANIM & GÜÇ</h3>
+                    <p>Özel motor sürücü tasarımı, Batarya Yönetim Sistemleri (BMS), güç dağıtımı, kablolama mimarisi ve mikrodenetleyici entegrasyonu.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-code feature-icon"></i>
+                    <h3>YAZILIM & OTONOMİ</h3>
+                    <p>Python ve C++ ile görev algoritmaları, sensör füzyonu verilerinin işlenmesi ve otonom navigasyon sürüş sistemleri.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section apply-section" id="apply">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">TAKIM <span>BAŞVURUSU</span></h2>
+                <p style="color: var(--text-muted); font-size: 1.2rem;">TARS ekibinin bir parçası olmak için formdaki bilgileri eksiksiz doldur.</p>
+            </div>
+
+            <div class="form-container">
+                <!-- FORMSUBMIT BAĞLANTISI BURAYA EKLENDİ -->
+                <form action="https://formsubmit.co/spakelyns@gmail.com" method="POST">
+                    
+                    <!-- Sana gelecek mailin konusu -->
+                    <input type="hidden" name="_subject" value="TARS Projesi Yeni Ekip Başvurusu!">
+                    <!-- Gönderildikten sonra sayfanın teşekkür mesajı göstermesi için sahte bir captcha kapatıcısı (opsiyonel) -->
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <div class="form-group">
+                        <label for="fullname">AD SOYAD</label>
+                        <input type="text" id="fullname" name="Ad_Soyad" class="form-control" required placeholder="Kimlikteki adınız...">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">E-POSTA</label>
+                            <input type="email" id="email" name="Email" class="form-control" required placeholder="aktif.adres@mail.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">TELEFON</label>
+                            <input type="tel" id="phone" name="Telefon" class="form-control" required placeholder="05XX XXX XX XX">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="university">ÜNİVERSİTE & BÖLÜM</label>
+                        <input type="text" id="university" name="Universite_ve_Bolum" class="form-control" required placeholder="Örn: Türk Hava Kurumu Üniversitesi - Uçak Bakım ve Onarım">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">HEDEFLENEN DEPARTMAN</label>
+                        <select id="department" name="Hedeflenen_Departman" class="form-control" required>
+                            <option value="" disabled selected>Lütfen bir alan seçin...</option>
+                            <option value="Mekanik Tasarım">Mekanik Tasarım ve Analiz</option>
+                            <option value="Yazılım ve Otonomi">Yazılım & Otonom Sistemler</option>
+                            <option value="Elektronik ve Donanım">Elektronik & Donanım (BMS/Sürücü)</option>
+                            <option value="Medya">Medya, 3D Render & Kurumsal İletişim</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience">TEKNİK YETKİNLİKLER VE PROJELER</label>
+                        <textarea id="experience" name="Deneyim_ve_Projeler" class="form-control" rows="5" required placeholder="Daha önce neler yaptın? Yetkin olduğun programlar ve diller neler? Linklerini (GitHub, LinkedIn) buraya ekleyebilirsin..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;">
+                        VERİLERİ İLET <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo" style="margin-bottom: 10px;">TARS<span>_</span></div>
+            <p>Mülakatlar Ankara içi yüz yüze veya online olarak gerçekleştirilecektir.</p>
+            <p style="font-size: 0.9rem;">&copy; 2026 TARS Proje Ekibi | TEKNOFEST Başvuru Sistemi</p>
+        </div>
+    </footer>
+
+</body>
+</html>
